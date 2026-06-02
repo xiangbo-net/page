@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人主页</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #eff6ff 0%, #ffffff 50%, #faf5ff 100%);
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen">
+    <!-- 导航栏 -->
+    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md shadow-sm z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="#" class="text-xl font-bold text-gray-900">我的主页</a>
+                <div class="flex space-x-8">
+                    <a href="#about" class="text-gray-700 hover:text-blue-600 transition-colors">关于我</a>
+                    <a href="#skills" class="text-gray-700 hover:text-blue-600 transition-colors">技能</a>
+                    <a href="#projects" class="text-gray-700 hover:text-blue-600 transition-colors">项目</a>
+                    <a href="#contact" class="text-gray-700 hover:text-blue-600 transition-colors">联系我</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="mb-8">
+                <div class="w-32 h-32 mx-auto bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-xl">
+                    <span class="text-4xl font-bold text-white">张三</span>
+                </div>
+            </div>
+            <h1 class="text-5xl font-bold text-gray-900 mb-4">
+                全栈开发工程师
+            </h1>
+            <p class="text-xl text-gray-600 mb-8">
+                热爱技术，专注于构建优雅的用户体验和高性能的应用程序
+            </p>
+            <div class="flex justify-center space-x-4">
+                <a href="#contact" class="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium">
+                    联系我
+                </a>
+                <a href="#projects" class="px-8 py-3 border-2 border-gray-300 text-gray-700 rounded-lg hover:border-blue-600 transition-colors font-medium">
+                    查看作品
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我 -->
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">关于我</h2>
+            <div class="prose prose-lg max-w-none">
+                <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                    我是一名拥有5年经验的全栈开发工程师，擅长使用现代前端框架和后端技术构建高质量的Web应用。
+                    我热衷于探索新技术，并致力于编写干净、可维护的代码。
+                </p>
+                <p class="text-gray-600 text-lg leading-relaxed">
+                    在工作之余，我喜欢阅读技术博客、参与开源项目，以及分享自己的学习心得。
+                    我相信技术的力量可以改变世界，并希望通过我的代码为用户创造价值。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技能 -->
+    <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">专业技能</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-2xl">💻</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">前端开发</h3>
+                    <p class="text-gray-600">React、Vue、TypeScript、Tailwind CSS</p>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-2xl">⚙️</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">后端开发</h3>
+                    <p class="text-gray-600">Node.js、Python、Express、FastAPI</p>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-2xl">🗄️</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">数据库</h3>
+                    <p class="text-gray-600">PostgreSQL、MongoDB、Redis</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 项目作品 -->
+    <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">项目作品</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="group bg-gray-50 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="h-48 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
+                        <span class="text-4xl">🛒</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">电商管理平台</h3>
+                        <p class="text-gray-600 mb-4">基于 React 和 Node.js 的全栈电商平台，包含商品管理、订单系统和数据分析功能。</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">React</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Node.js</span>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group bg-gray-50 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="h-48 bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center">
+                        <span class="text-4xl">💬</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">实时聊天应用</h3>
+                        <p class="text-gray-600 mb-4">使用 WebSocket 实现的即时通讯应用，支持群聊、私聊和文件分享功能。</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Vue</span>
+                            <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm">WebSocket</span>
+                            <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm">Redis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl mx-auto text-center">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8">联系我</h2>
+            <p class="text-gray-600 mb-12 text-lg">
+                如果您有任何问题或合作意向，欢迎通过以下方式与我联系
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
+                <a href="mailto:example@email.com" class="flex flex-col items-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                    <span class="text-3xl mb-3">📧</span>
+                    <span class="text-gray-700 font-medium">Email</span>
+                </a>
+                <a href="#" class="flex flex-col items-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                    <span class="text-3xl mb-3">🐙</span>
+                    <span class="text-gray-700 font-medium">GitHub</span>
+                </a>
+                <a href="#" class="flex flex-col items-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                    <span class="text-3xl mb-3">💼</span>
+                    <span class="text-gray-700 font-medium">LinkedIn</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="py-8 px-4 sm:px-6 lg:px-8 bg-gray-900">
+        <div class="max-w-6xl mx-auto text-center">
+            <p class="text-gray-400">© 2024 张三. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
