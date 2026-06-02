@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>企业AI应用场景与咨询师落地服务指南</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --blue-50: #E6F1FB; --blue-100: #B5D4F4; --blue-400: #378ADD; --blue-600: #185FA5; --blue-800: #0C447C; --blue-900: #042C53;
+    --green-50: #EAF3DE; --green-200: #97C459; --green-600: #3B6D11; --green-800: #27500A;
+    --purple-50: #EEEDFE; --purple-200: #AFA9EC; --purple-600: #534AB7; --purple-800: #3C3489;
+    --coral-50: #FAECE7; --coral-200: #F0997B; --coral-600: #993C1D; --coral-800: #712B13;
+    --amber-50: #FAEEDA; --amber-200: #EF9F27; --amber-600: #854F0B;
+    --teal-50: #E1F5EE; --teal-400: #1D9E75; --teal-600: #0F6E56;
+    --gray-50: #F1EFE8; --gray-100: #D3D1C7; --gray-400: #888780; --gray-600: #5F5E5A; --gray-800: #444441;
+    --white: #fff;
+    --radius-sm: 8px; --radius-md: 12px; --radius-lg: 16px;
+    --shadow: 0 1px 4px rgba(0,0,0,.06);
+  }
+  body {
+    font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+    background: #F6F8FA;
+    color: var(--gray-800);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  /* ─── Layout ─── */
+  .page { max-width: 1080px; margin: 0 auto; padding: 40px 24px 80px; }
+  /* ─── Header ─── */
+  .hero {
+    background: linear-gradient(135deg, var(--blue-900) 0%, var(--purple-800) 100%);
+    border-radius: var(--radius-lg);
+    padding: 48px 48px 40px;
+    color: #fff;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -60px; right: -60px;
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.05);
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 100px;
+    padding: 4px 14px;
+    font-size: 12px;
+    margin-bottom: 16px;
+  }
+  .hero h1 { font-size: 28px; font-weight: 600; margin-bottom: 10px; line-height: 1.35; }
+  .hero p { font-size: 14px; opacity: .75; max-width: 560px; }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .hero-stat {
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+  }
+  .hero-stat .num { font-size: 22px; font-weight: 600; }
+  .hero-stat .lbl { font-size: 12px; opacity: .7; margin-top: 2px; }
+  /* ─── Section ─── */
+  .section { margin-bottom: 40px; }
+  .section-title {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 18px; font-weight: 600;
+    color: var(--blue-900);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--blue-50);
+  }
+  .section-title .icon {
+    width: 32px; height: 32px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .subsection-title {
+    font-size: 15px; font-weight: 600;
+    color: var(--blue-800);
+    margin: 24px 0 14px;
+  }
+  /* ─── Cards ─── */
+  .card {
+    background: var(--white);
+    border: 1px solid #E8EBF0;
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
+    box-shadow: var(--shadow);
+  }
+  .card-grid { display: grid; gap: 16px; }
+  .card-grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .card-grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .card-grid-4 { grid-template-columns: repeat(4, 1fr); }
+  /* ─── Tier Cards ─── */
+  .tier { border-radius: var(--radius-md); padding: 20px 24px; margin-bottom: 16px; }
+  .tier-1 { background: var(--green-50); border: 1px solid #C0DD97; }
+  .tier-2 { background: var(--blue-50); border: 1px solid var(--blue-100); }
+  .tier-3 { background: var(--coral-50); border: 1px solid #F5C4B3; }
+  .tier-header {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 16px;
+  }
+  .tier-badge {
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 12px; font-weight: 600;
+  }
+  .tier-1 .tier-badge { background: var(--green-800); color: #fff; }
+  .tier-2 .tier-badge { background: var(--blue-600); color: #fff; }
+  .tier-3 .tier-badge { background: var(--coral-600); color: #fff; }
+  .tier-title { font-size: 15px; font-weight: 600; }
+  .tier-1 .tier-title { color: var(--green-800); }
+  .tier-2 .tier-title { color: var(--blue-800); }
+  .tier-3 .tier-title { color: var(--coral-800); }
+  .tier-desc { font-size: 12px; margin-left: auto; padding: 3px 10px; border-radius: 6px; }
+  .tier-1 .tier-desc { background: #C0DD97; color: var(--green-800); }
+  .tier-2 .tier-desc { background: var(--blue-100); color: var(--blue-800); }
+  .tier-3 .tier-desc { background: #F5C4B3; color: var(--coral-800); }
+  .tier-items { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  .tier-item {
+    background: rgba(255,255,255,.7);
+    border-radius: var(--radius-sm);
+    padding: 12px;
+    text-align: center;
+  }
+  .tier-item-name { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+  .tier-item-effect { font-size: 11px; color: var(--gray-600); }
+  /* ─── Industry cards ─── */
+  .industry-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .industry-card {
+    background: var(--white);
+    border: 1px solid #E8EBF0;
+    border-radius: var(--radius-md);
+    padding: 16px;
+    box-shadow: var(--shadow);
+  }
+  .industry-icon { font-size: 24px; margin-bottom: 8px; }
+  .industry-name { font-size: 13px; font-weight: 600; color: var(--blue-900); margin-bottom: 6px; }
+  .industry-scenes { font-size: 12px; color: var(--gray-600); line-height: 1.6; }
+  .industry-case {
+    margin-top: 8px; padding-top: 8px;
+    border-top: 1px solid #F0F2F5;
+    font-size: 11px; color: var(--blue-600);
+    line-height: 1.5;
+  }
+  /* ─── Comparison table ─── */
+  .compare-table { width: 100%; border-collapse: collapse; }
+  .compare-table th {
+    padding: 10px 16px;
+    font-size: 13px; font-weight: 600;
+    text-align: left;
+    background: var(--blue-900); color: #fff;
+  }
+  .compare-table th:first-child { border-radius: 8px 0 0 0; }
+  .compare-table th:last-child { border-radius: 0 8px 0 0; }
+  .compare-table td {
+    padding: 10px 16px;
+    font-size: 13px;
+    border-bottom: 1px solid #F0F2F5;
+    vertical-align: top;
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tr:nth-child(even) td { background: var(--gray-50); }
+  .compare-table td:first-child { font-weight: 600; color: var(--gray-800); width: 100px; }
+  .compare-table td:nth-child(2) { color: var(--blue-800); }
+  .compare-table td:nth-child(3) { color: var(--coral-600); }
+  /* ─── Phase steps ─── */
+  .phase-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+  .phase-row::before {
+    content: '';
+    position: absolute;
+    top: 28px; left: 12.5%; right: 12.5%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--blue-400), var(--purple-600));
+  }
+  .phase-step { padding: 0 8px; text-align: center; position: relative; }
+  .phase-num {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 600; color: #fff;
+    margin: 0 auto 12px;
+    position: relative; z-index: 1;
+  }
+  .phase-1 .phase-num { background: var(--blue-400); }
+  .phase-2 .phase-num { background: var(--blue-600); }
+  .phase-3 .phase-num { background: var(--purple-600); }
+  .phase-4 .phase-num { background: var(--purple-800); }
+  .phase-title { font-size: 13px; font-weight: 600; margin-bottom: 4px; color: var(--blue-900); }
+  .phase-time { font-size: 11px; color: var(--gray-600); margin-bottom: 10px; }
+  .phase-body {
+    background: var(--white);
+    border: 1px solid #E8EBF0;
+    border-radius: var(--radius-sm);
+    padding: 12px;
+    text-align: left;
+    box-shadow: var(--shadow);
+  }
+  .phase-body li { font-size: 12px; color: var(--gray-800); padding: 3px 0; padding-left: 14px; position: relative; list-style: none; }
+  .phase-body li::before { content: '·'; position: absolute; left: 4px; color: var(--blue-400); font-size: 14px; }
+  .phase-goal { font-size: 11px; font-weight: 600; color: var(--blue-600); margin-top: 8px; padding-top: 8px; border-top: 1px solid #F0F2F5; }
+  /* ─── Service cards ─── */
+  .service-direction { margin-bottom: 20px; }
+  .service-header {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 16px;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    font-size: 14px; font-weight: 600;
+    color: #fff;
+  }
+  .dir-1 .service-header { background: var(--blue-600); }
+  .dir-2 .service-header { background: var(--purple-600); }
+  .dir-3 .service-header { background: var(--teal-600); }
+  .service-body {
+    border: 1px solid #E8EBF0;
+    border-top: none;
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    overflow: hidden;
+  }
+  .service-row {
+    display: grid;
+    grid-template-columns: 1.2fr 2fr 1fr;
+    gap: 0;
+    border-bottom: 1px solid #F0F2F5;
+  }
+  .service-row:last-child { border-bottom: none; }
+  .service-row:nth-child(even) { background: var(--gray-50); }
+  .service-row div { padding: 10px 16px; font-size: 13px; }
+  .service-row .s-name { font-weight: 600; color: var(--gray-800); }
+  .service-row .s-desc { color: var(--gray-600); }
+  .service-row .s-price { font-weight: 600; color: var(--blue-600); white-space: nowrap; }
+  /* ─── Delivery flow ─── */
+  .deliver-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .deliver-card {
+    background: var(--white);
+    border: 1px solid #E8EBF0;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .deliver-head {
+    padding: 10px 14px;
+    font-size: 13px; font-weight: 600; color: #fff;
+  }
+  .d-1 .deliver-head { background: var(--blue-400); }
+  .d-2 .deliver-head { background: var(--blue-600); }
+  .d-3 .deliver-head { background: var(--purple-600); }
+  .d-4 .deliver-head { background: var(--purple-800); }
+  .deliver-body { padding: 12px 14px; }
+  .deliver-body li { font-size: 12px; color: var(--gray-800); padding: 3px 0; padding-left: 14px; list-style: none; position: relative; }
+  .deliver-body li::before { content: '›'; position: absolute; left: 3px; color: var(--blue-400); font-weight: 600; }
+  /* ─── Advantage table ─── */
+  .adv-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+  .adv-card {
+    background: var(--white);
+    border: 1px solid #E8EBF0;
+    border-radius: var(--radius-md);
+    padding: 20px;
+    box-shadow: var(--shadow);
+  }
+  .adv-label {
+    font-size: 12px; font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    display: inline-block;
+  }
+  .adv-service { background: var(--blue-50); color: var(--blue-800); }
+  .adv-ai { background: var(--teal-50); color: var(--teal-600); }
+  .adv-product { background: var(--amber-50); color: var(--amber-600); }
+  .adv-card h4 { font-size: 14px; font-weight: 600; color: var(--blue-900); margin-bottom: 8px; }
+  .adv-card p { font-size: 12px; color: var(--gray-600); line-height: 1.6; }
+  /* ─── Product cards ─── */
+  .product-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .product-card {
+    background: var(--white);
+    border: 1px solid #E8EBF0;
+    border-radius: var(--radius-md);
+    padding: 16px;
+    box-shadow: var(--shadow);
+    text-align: center;
+  }
+  .product-num {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--blue-900); color: #fff;
+    font-size: 13px; font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 10px;
+  }
+  .product-name { font-size: 13px; font-weight: 600; color: var(--blue-900); margin-bottom: 4px; }
+  .product-time { font-size: 11px; color: var(--gray-600); }
+  .product-price { font-size: 13px; font-weight: 600; color: var(--blue-600); margin-top: 6px; }
+  .product-features { margin-top: 10px; text-align: left; }
+  .product-features li { font-size: 11px; color: var(--gray-600); padding: 2px 0; padding-left: 12px; list-style: none; position: relative; }
+  .product-features li::before { content: '·'; position: absolute; left: 3px; color: var(--blue-400); font-size: 13px; }
+  /* ─── Pitfall cards ─── */
+  .pitfall-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 16px; }
+  .pitfall-card {
+    background: var(--coral-50);
+    border: 1px solid #F5C4B3;
+    border-radius: var(--radius-md);
+    padding: 16px;
+  }
+  .pitfall-title { font-size: 13px; font-weight: 600; color: var(--coral-800); margin-bottom: 6px; }
+  .pitfall-body { font-size: 12px; color: var(--gray-800); line-height: 1.6; margin-bottom: 8px; }
+  .pitfall-tip {
+    font-size: 12px; color: var(--teal-600);
+    padding: 6px 10px;
+    background: var(--teal-50);
+    border-radius: 6px;
+  }
+  .consultant-pitfall-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  /* ─── Checklist ─── */
+  .checklist { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .check-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    background: var(--white);
+    border: 1px solid #E8EBF0;
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    box-shadow: var(--shadow);
+  }
+  .check-box {
+    width: 20px; height: 20px; border-radius: 6px;
+    border: 2px solid var(--blue-400);
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .check-title { font-size: 13px; font-weight: 600; color: var(--blue-900); margin-bottom: 3px; }
+  .check-body { font-size: 12px; color: var(--gray-600); line-height: 1.5; }
+  /* ─── Value bridge ─── */
+  .bridge-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .bridge-card {
+    background: var(--blue-50);
+    border: 1px solid var(--blue-100);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    text-align: center;
+  }
+  .bridge-icon { font-size: 22px; margin-bottom: 8px; }
+  .bridge-title { font-size: 13px; font-weight: 600; color: var(--blue-800); margin-bottom: 6px; }
+  .bridge-desc { font-size: 12px; color: var(--gray-600); line-height: 1.5; }
+  /* ─── Five factors ─── */
+  .factors-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .factor-card {
+    background: var(--purple-50);
+    border: 1px solid var(--purple-200);
+    border-radius: var(--radius-md);
+    padding: 14px;
+    text-align: center;
+  }
+  .factor-num { font-size: 20px; font-weight: 600; color: var(--purple-600); margin-bottom: 6px; }
+  .factor-title { font-size: 13px; font-weight: 600; color: var(--purple-800); margin-bottom: 4px; }
+  .factor-desc { font-size: 11px; color: var(--gray-600); }
+  /* ─── CTA path ─── */
+  .path-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+  .path-step {
+    background: var(--white);
+    border: 1px solid #E8EBF0;
+    padding: 20px;
+    position: relative;
+  }
+  .path-step:first-child { border-radius: var(--radius-md) 0 0 var(--radius-md); }
+  .path-step:last-child { border-radius: 0 var(--radius-md) var(--radius-md) 0; }
+  .path-step + .path-step { border-left: none; }
+  .path-step::after {
+    content: '→';
+    position: absolute; right: -12px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px; color: var(--blue-400);
+    z-index: 2;
+  }
+  .path-step:last-child::after { display: none; }
+  .path-badge {
+    font-size: 11px; font-weight: 600;
+    padding: 3px 10px; border-radius: 100px;
+    margin-bottom: 10px; display: inline-block;
+  }
+  .p-1 .path-badge { background: var(--blue-50); color: var(--blue-600); }
+  .p-2 .path-badge { background: var(--purple-50); color: var(--purple-600); }
+  .p-3 .path-badge { background: var(--teal-50); color: var(--teal-600); }
+  .path-title { font-size: 14px; font-weight: 600; color: var(--blue-900); margin-bottom: 8px; }
+  .path-body li { font-size: 12px; color: var(--gray-600); padding: 3px 0; padding-left: 14px; list-style: none; position: relative; }
+  .path-body li::before { content: '·'; position: absolute; left: 3px; color: var(--blue-400); font-size: 14px; }
+  /* ─── Refs ─── */
+  .ref-list { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .ref-list li {
+    background: var(--white);
+    border: 1px solid #E8EBF0;
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-size: 12px; color: var(--gray-600);
+  }
+  .ref-list li strong { color: var(--blue-800); }
+  /* ─── Footer ─── */
+  .footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+    color: var(--gray-400);
+    border-top: 1px solid #E8EBF0;
+    margin-top: 48px;
+  }
+  /* ─── Responsive ─── */
+  @media (max-width: 768px) {
+    .hero-stats, .card-grid-3, .card-grid-4, .tier-items, .industry-grid,
+    .phase-row, .deliver-row, .adv-row, .product-row, .pitfall-row,
+    .consultant-pitfall-row, .factors-row, .path-row, .bridge-row, .ref-list {
+      grid-template-columns: 1fr;
+    }
+    .card-grid-2 { grid-template-columns: 1fr; }
+    .phase-row::before { display: none; }
+    .path-step::after { display: none; }
+    .service-row { grid-template-columns: 1fr; }
+    .compare-table { display: block; overflow-x: auto; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ═══ Hero ═══ -->
+  <div class="hero">
+    <div class="hero-badge">2026 企业AI应用场景报告 · 组织效能咨询顾问版</div>
+    <h1>企业AI应用场景<br>与咨询师落地服务指南</h1>
+    <p>基于近千份企业AI实践案例整理，面向组织效能咨询顾问，提供可操作的场景地图与服务方法论</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="num">250亿$</div>
+        <div class="lbl">2025年全球AI咨询市场规模</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">900亿$</div>
+        <div class="lbl">预计2030年规模，年增20%+</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">11%</div>
+        <div class="lbl">真正达成业务AI成熟的企业比例</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ Section 1: 市场背景 ═══ -->
+  <div class="section">
+    <div class="section-title">
+      <div class="icon" style="background:var(--blue-50);">📊</div>
+      一、市场背景：为什么现在必须关注企业AI赋能
+    </div>
+
+    <div class="card-grid card-grid-2" style="margin-bottom:16px;">
+      <div class="card">
+        <div class="subsection-title" style="margin-top:0;">2026年关键技术趋势</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <div style="background:var(--blue-50);border-radius:8px;padding:12px;">
+            <div style="font-size:12px;font-weight:600;color:var(--blue-800);margin-bottom:4px;">多模态技术突破</div>
+            <div style="font-size:12px;color:var(--gray-600);">文本、图像、语音、视频融合处理已成常态</div>
+          </div>
+          <div style="background:var(--purple-50);border-radius:8px;padding:12px;">
+            <div style="font-size:12px;font-weight:600;color:var(--purple-800);margin-bottom:4px;">超级智能体涌现</div>
+            <div style="font-size:12px;color:var(--gray-600);">从单点工具走向业务重构的核心执行者</div>
+          </div>
+          <div style="background:var(--teal-50);border-radius:8px;padding:12px;">
+            <div style="font-size:12px;font-weight:600;color:var(--teal-600);margin-bottom:4px;">行业垂直大模型</div>
+            <div style="font-size:12px;color:var(--gray-600);">制造、医疗、金融专属模型规模化应用</div>
+          </div>
+          <div style="background:var(--amber-50);border-radius:8px;padding:12px;">
+            <div style="font-size:12px;font-weight:600;color:var(--amber-600);margin-bottom:4px;">低代码AI工作流</div>
+            <div style="font-size:12px;color:var(--gray-600);">大幅降低企业AI落地门槛</div>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="background:linear-gradient(135deg,#EAF3DE,#E6F1FB);border:none;">
+        <div style="font-size:13px;font-weight:600;color:var(--blue-900);margin-bottom:16px;">核心洞察 · 给咨询师的一句话</div>
+        <div style="font-size:22px;font-weight:600;color:var(--blue-900);line-height:1.4;margin-bottom:16px;">"85% 的企业宣称做好了AI准备，但真正业务成熟的只有 11%"</div>
+        <div style="font-size:13px;color:var(--gray-600);border-top:1px solid rgba(0,0,0,.06);padding-top:12px;">
+          这 <strong style="color:var(--blue-600);">74% 的差距</strong>，就是咨询顾问的机会空间。<br>
+          AI落地的本质不是技术问题，而是 <strong style="color:var(--blue-600);">业务理解 + 组织推动</strong>。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ Section 2: 场景全景 ═══ -->
+  <div class="section">
+    <div class="section-title">
+      <div class="icon" style="background:var(--green-50);">🗺</div>
+      二、企业AI应用场景全景：从哪里切入
+    </div>
+
+    <div class="subsection-title">2.1 三梯队场景切入地图（按落地难度排列）</div>
+
+    <!-- Tier 1 -->
+    <div class="tier tier-1">
+      <div class="tier-header">
+        <div class="tier-badge">第一梯队</div>
+        <div class="tier-title">低门槛 · 快见效 · 建议优先推荐</div>
+        <div class="tier-desc">投入小 / 1-3个月见效</div>
+      </div>
+      <div class="tier-items">
+        <div class="tier-item">
+          <div class="tier-item-name" style="color:var(--green-800);">智能客服</div>
+          <div class="tier-item-effect">成本降低30-50%</div>
+        </div>
+        <div class="tier-item">
+          <div class="tier-item-name" style="color:var(--green-800);">内容营销</div>
+          <div class="tier-item-effect">效率提升3-5倍</div>
+        </div>
+        <div class="tier-item">
+          <div class="tier-item-name" style="color:var(--green-800);">知识管理</div>
+          <div class="tier-item-effect">检索效率+70%</div>
+        </div>
+        <div class="tier-item">
+          <div class="tier-item-name" style="color:var(--green-800);">协同办公</div>
+          <div class="tier-item-effect">行政效率+40%</div>
+        </div>
+        <div class="tier-item">
+          <div class="tier-item-name" style="color:var(--green-800);">招聘筛选</div>
+          <div class="tier-item-effect">周期缩短50%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tier 2 -->
+    <div class="tier tier-2">
+      <div class="tier-header">
+        <div class="tier-badge">第二梯队</div>
+        <div class="tier-title">中等门槛 · 需数据基础 · 适合进阶推荐</div>
+        <div class="tier-desc">需一定投入 / 3-6个月</div>
+      </div>
+      <div class="tier-items">
+        <div class="tier-item">
+          <div class="tier-item-name" style="color:var(--blue-800);">销售助手</div>
+          <div class="tier-item-effect">转化率+15-25%</div>
+        </div>
+        <div class="tier-item">
+          <div class="tier-item-name" style="color:var(--blue-800);">财务智能</div>
+          <div class="tier-item-effect">处理效率+60%</div>
+        </div>
+        <div class="tier-item">
+          <div class="tier-item-name" style="color:var(--blue-800);">供应链预测</div>
+          <div class="tier-item-effect">周转效率+25%</div>
+        </div>
+        <div class="tier-item">
+          <div class="tier-item-name" style="color:var(--blue-800);">HR分析</div>
+          <div class="tier-item-effect">保留率+10-15%</div>
+        </div>
+        <div class="tier-item">
+          <div class="tier-item-name" style="color:var(--blue-800);">合同审查</div>
+          <div class="tier-item-effect">审查效率+80%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tier 3 -->
+    <div class="tier tier-3">
+      <div class="tier-header">
+        <div class="tier-badge">第三梯队</div>
+        <div class="tier-title">高门槛 · 战略级价值 · 需要长期投入</div>
+        <div class="tier-desc">高投入 / 6-18个月</div>
+      </div>
+      <div class="tier-items">
+        <div class="tier-item">
+          <div class="tier-item-name" style="color:var(--coral-800);">智能制造</div>
+          <div class="tier-item-effect">停机损失-40%</div>
+        </div>
+        <div class="tier-item">
+          <div class="tier-item-name" style="color:var(--coral-800);">产品研创</div>
+          <div class="tier-item-effect">研发周期-30%</div>
+        </div>
+        <div class="tier-item">
+          <div class="tier-item-name" style="color:var(--coral-800);">个性化推荐</div>
+          <div class="tier-item-effect">转化率+15-20%</div>
+        </div>
+        <div class="tier-item">
+          <div class="tier-item-name" style="color:var(--coral-800);">风险管控</div>
+          <div class="tier-item-effect">风控精准提升</div>
+        </div>
+        <div class="tier-item">
+          <div class="tier-item-name" style="color:var(--coral-800);">战略决策</div>
+          <div class="tier-item-effect">决策质量提升</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Industry -->
+    <div class="subsection-title">2.2 行业典型场景速查</div>
+    <div class="industry-grid">
+      <div class="industry-card">
+        <div class="industry-icon">🏭</div>
+        <div class="industry-name">制造业</div>
+        <div class="industry-scenes">AI质检 · 预测维护 · 生产调度</div>
+        <div class="industry-case">一汽×通义大模型：研发周期-30%，缺陷识别99.2%</div>
+      </div>
+      <div class="industry-card">
+        <div class="industry-icon">🛒</div>
+        <div class="industry-name">零售电商</div>
+        <div class="industry-scenes">需求预测 · 个性推荐 · AI客服</div>
+        <div class="industry-case">京东AI购：库存周转+25%，转化率+18%</div>
+      </div>
+      <div class="industry-card">
+        <div class="industry-icon">🏥</div>
+        <div class="industry-name">医疗健康</div>
+        <div class="industry-scenes">辅助诊断 · 药物研发 · 慢病管理</div>
+        <div class="industry-case">达摩院早筛AI准确率95%+；AlphaFold靶点发现数年→数月</div>
+      </div>
+      <div class="industry-card">
+        <div class="industry-icon">💰</div>
+        <div class="industry-name">金融服务</div>
+        <div class="industry-scenes">量化交易 · 智能风控 · 客户画像</div>
+        <div class="industry-case">AI量化智能体实盘验证强劲盈利与风控能力</div>
+      </div>
+      <div class="industry-card">
+        <div class="industry-icon">📚</div>
+        <div class="industry-name">教育培训</div>
+        <div class="industry-scenes">个性化学习 · 智能评测 · 课程生成</div>
+        <div class="industry-case">AI自适应学习系统：学习效率+30-50%</div>
+      </div>
+      <div class="industry-card">
+        <div class="industry-icon">🚚</div>
+        <div class="industry-name">物流运输</div>
+        <div class="industry-scenes">路径优化 · 仓储调度 · 需求预测</div>
+        <div class="industry-case">AI调度系统降低运输成本15-25%</div>
+      </div>
+      <div class="industry-card">
+        <div class="industry-icon">⚖️</div>
+        <div class="industry-name">法律服务</div>
+        <div class="industry-scenes">合同审查 · 案例检索 · 文书生成</div>
+        <div class="industry-case">AI合同审查效率+80%，风险识别更全面</div>
+      </div>
+      <div class="industry-card">
+        <div class="industry-icon">🏢</div>
+        <div class="industry-name">房地产</div>
+        <div class="industry-scenes">智能估价 · 客户匹配 · 市场分析</div>
+        <div class="industry-case">AI估价精准度提升，客户匹配效率翻倍</div>
+      </div>
+    </div>
+
+    <!-- SME vs Large -->
+    <div class="subsection-title">2.3 中小企业 vs 大企业的切入差异</div>
+    <div class="card">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>维度</th>
+            <th>中小企业</th>
+            <th>大企业</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>首选场景</td><td>智能客服、内容营销、协同办公</td><td>智能制造、供应链优化、战略决策</td></tr>
+          <tr><td>投入预算</td><td>5-20万/年</td><td>50-500万/年</td></tr>
+          <tr><td>落地周期</td><td>1-3个月</td><td>6-18个月</td></tr>
+          <tr><td>核心诉求</td><td>降本增效、快速见效</td><td>系统重构、竞争壁垒</td></tr>
+          <tr><td>技术路径</td><td>SaaS工具+轻量定制</td><td>私有化部署+深度定制</td></tr>
+          <tr><td>成功关键</td><td>即用即走、低学习成本</td><td>数据治理、组织协同</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ═══ Section 3: 落地路径 ═══ -->
+  <div class="section">
+    <div class="section-title">
+      <div class="icon" style="background:var(--purple-50);">🛤</div>
+      三、企业AI落地的阶段性路径
+    </div>
+
+    <div class="subsection-title" style="margin-top:0;">3.1 四阶段落地模型</div>
+    <div class="phase-row" style="margin-bottom:32px;">
+      <div class="phase-step phase-1">
+        <div class="phase-num">1</div>
+        <div class="phase-title">试点探索</div>
+        <div class="phase-time">1-3个月</div>
+        <div class="phase-body">
+          <ul>
+            <li>以业务痛点为导向选择场景</li>
+            <li>小范围技术选型与验证</li>
+            <li>识别高价值、低风险切入点</li>
+          </ul>
+          <div class="phase-goal">目标：验证可行性，获取早期胜利</div>
+        </div>
+      </div>
+      <div class="phase-step phase-2">
+        <div class="phase-num">2</div>
+        <div class="phase-title">能力构建</div>
+        <div class="phase-time">3-6个月</div>
+        <div class="phase-body">
+          <ul>
+            <li>构建可复用AI能力模块</li>
+            <li>布局工程化体系与数据治理</li>
+            <li>人才与组织配套建设</li>
+          </ul>
+          <div class="phase-goal">目标：形成标准化能力，准备扩展</div>
+        </div>
+      </div>
+      <div class="phase-step phase-3">
+        <div class="phase-num">3</div>
+        <div class="phase-title">规模化扩展</div>
+        <div class="phase-time">6-12个月</div>
+        <div class="phase-body">
+          <ul>
+            <li>实现跨部门数据融合</li>
+            <li>推动多场景复制推广</li>
+            <li>建立测评指标持续优化</li>
+          </ul>
+          <div class="phase-goal">目标：从单点突破到全链路协同</div>
+        </div>
+      </div>
+      <div class="phase-step phase-4">
+        <div class="phase-num">4</div>
+        <div class="phase-title">可持续运营</div>
+        <div class="phase-time">长期</div>
+        <div class="phase-body">
+          <ul>
+            <li>合规与安全治理常态化</li>
+            <li>审计与风险管控机制</li>
+            <li>AI能力持续迭代升级</li>
+          </ul>
+          <div class="phase-goal">目标：AI成为企业核心竞争力</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection-title">3.2 落地五大共性要素</div>
+    <div class="factors-row">
+      <div class="factor-card">
+        <div class="factor-num">01</div>
+        <div class="factor-title">场景适配</div>
+        <div class="factor-desc">以业务痛点为导向选择应用场景</div>
+      </div>
+      <div class="factor-card">
+        <div class="factor-num">02</div>
+        <div class="factor-title">技术框架</div>
+        <div class="factor-desc">工具链与技术选型策略</div>
+      </div>
+      <div class="factor-card">
+        <div class="factor-num">03</div>
+        <div class="factor-title">工程化体系</div>
+        <div class="factor-desc">从试点迈向规模化的基础设施</div>
+      </div>
+      <div class="factor-card">
+        <div class="factor-num">04</div>
+        <div class="factor-title">数据融合</div>
+        <div class="factor-desc">跨部门数据整合能力</div>
+      </div>
+      <div class="factor-card">
+        <div class="factor-num">05</div>
+        <div class="factor-title">合规安全</div>
+        <div class="factor-desc">治理与审计机制预留</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ Section 4: 咨询师服务 ═══ -->
+  <div class="section">
+    <div class="section-title">
+      <div class="icon" style="background:var(--teal-50);">💼</div>
+      四、咨询师如何提供AI落地服务
+    </div>
+
+    <div class="subsection-title" style="margin-top:0;">4.1 服务定位：你是价值桥梁，不是技术供应商</div>
+    <div class="bridge-row" style="margin-bottom:24px;">
+      <div class="bridge-card">
+        <div class="bridge-icon">🔍</div>
+        <div class="bridge-title">理解业务痛点</div>
+        <div class="bridge-desc">识别AI能解决什么、不能解决什么</div>
+      </div>
+      <div class="bridge-card">
+        <div class="bridge-icon">🔗</div>
+        <div class="bridge-title">连接技术与商业</div>
+        <div class="bridge-desc">把AI能力翻译成业务价值</div>
+      </div>
+      <div class="bridge-card">
+        <div class="bridge-icon">🏗</div>
+        <div class="bridge-title">推动组织变革</div>
+        <div class="bridge-desc">AI落地本质是组织问题，不是纯技术问题</div>
+      </div>
+      <div class="bridge-card">
+        <div class="bridge-icon">🛡</div>
+        <div class="bridge-title">管控落地风险</div>
+        <div class="bridge-desc">期望管理、过程留痕、责任界定</div>
+      </div>
+    </div>
+
+    <div class="subsection-title">4.2 三大服务方向与定价参考</div>
+
+    <div class="service-direction dir-1">
+      <div class="service-header">🎯 方向一：AI战略咨询（顶层设计与规划）</div>
+      <div class="service-body">
+        <div class="service-row">
+          <div class="s-name">AI战略规划</div>
+          <div class="s-desc">企业AI现状诊断、应用场景评估、三年AI路线图</div>
+          <div class="s-price">10-50万/项</div>
+        </div>
+        <div class="service-row">
+          <div class="s-name">数字化转型咨询</div>
+          <div class="s-desc">整体数字化+AI融合规划、组织架构调整建议</div>
+          <div class="s-price">20-100万/项</div>
+        </div>
+        <div class="service-row">
+          <div class="s-name">年度战略顾问</div>
+          <div class="s-desc">持续陪伴式顾问服务，季度复盘与调整</div>
+          <div class="s-price">50-200万/年</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-direction dir-2" style="margin-top:12px;">
+      <div class="service-header">🔧 方向二：AI技术咨询（方案设计与选型）</div>
+      <div class="service-body">
+        <div class="service-row">
+          <div class="s-name">技术方案输出</div>
+          <div class="s-desc">针对特定场景的AI技术方案、供应商评估</div>
+          <div class="s-price">5-20万/个</div>
+        </div>
+        <div class="service-row">
+          <div class="s-name">系统架构设计</div>
+          <div class="s-desc">AI系统与企业现有IT系统的集成架构</div>
+          <div class="s-price">10-30万/个</div>
+        </div>
+        <div class="service-row">
+          <div class="s-name">月度技术顾问</div>
+          <div class="s-desc">驻场/远程技术顾问服务</div>
+          <div class="s-price">2-5万/月</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-direction dir-3" style="margin-top:12px;">
+      <div class="service-header">🚀 方向三：AI实施咨询（落地保障与优化）</div>
+      <div class="service-body">
+        <div class="service-row">
+          <div class="s-name">项目全流程管理</div>
+          <div class="s-desc">AI项目从启动到交付的全流程监理</div>
+          <div class="s-price">3-10万/月</div>
+        </div>
+        <div class="service-row">
+          <div class="s-name">团队搭建顾问</div>
+          <div class="s-desc">AI团队组建、岗位职责设计、招聘支持</div>
+          <div class="s-price">5-15万/月</div>
+        </div>
+        <div class="service-row">
+          <div class="s-name">季度长期服务</div>
+          <div class="s-desc">持续实施支持、效果评估、方案迭代</div>
+          <div class="s-price">20-50万/季</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection-title">4.3 标准交付流程（四阶段闭环）</div>
+    <div class="deliver-row">
+      <div class="deliver-card d-1">
+        <div class="deliver-head">前期评估 · 2-4周</div>
+        <div class="deliver-body">
+          <ul>
+            <li>客户需求深度访谈</li>
+            <li>企业AI现状全面评估</li>
+            <li>核心问题诊断</li>
+            <li>共同设定可量化目标</li>
+          </ul>
+        </div>
+      </div>
+      <div class="deliver-card d-2">
+        <div class="deliver-head">方案设计 · 3-6周</div>
+        <div class="deliver-body">
+          <ul>
+            <li>输出整体规划方案</li>
+            <li>设计适配技术方案</li>
+            <li>明确完整实施路径</li>
+            <li>完成资源规划</li>
+          </ul>
+        </div>
+      </div>
+      <div class="deliver-card d-3">
+        <div class="deliver-head">实施指导 · 持续</div>
+        <div class="deliver-body">
+          <ul>
+            <li>协助项目启动</li>
+            <li>全程进度监控</li>
+            <li>风险识别与应对</li>
+            <li>按节点效果评估</li>
+          </ul>
+        </div>
+      </div>
+      <div class="deliver-card d-4">
+        <div class="deliver-head">持续优化 · 长期</div>
+        <div class="deliver-body">
+          <ul>
+            <li>落地效果全面分析</li>
+            <li>问题诊断与解决</li>
+            <li>方案迭代调整</li>
+            <li>建立持续改进机制</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ Section 5: 个人切入 ═══ -->
+  <div class="section">
+    <div class="section-title">
+      <div class="icon" style="background:var(--amber-50);">⭐</div>
+      五、结合你的背景：组织效能咨询顾问的AI赋能切入点
+    </div>
+
+    <div class="subsection-title" style="margin-top:0;">5.1 你的独特优势：现有服务 × AI能力的结合</div>
+    <div class="adv-row" style="margin-bottom:24px;">
+      <div class="adv-card">
+        <div class="adv-label adv-service">现有服务</div>
+        <h4>股权设计与股权激励</h4>
+        <p style="margin-bottom:12px;">AI赋能方向：AI辅助股权架构设计、激励方案智能测算、合规风险扫描</p>
+        <div class="adv-label adv-product">新产品形态</div>
+        <p>"智能股权设计助手"——输入企业参数，自动生成多套股权方案</p>
+      </div>
+      <div class="adv-card">
+        <div class="adv-label adv-service">现有服务</div>
+        <h4>组织流程优化</h4>
+        <p style="margin-bottom:12px;">AI赋能方向：AI流程挖掘（Process Mining）、流程瓶颈自动识别、RPA+AI自动化</p>
+        <div class="adv-label adv-product">新产品形态</div>
+        <p>"AI流程诊断服务"——用AI分析企业现有流程，识别优化点</p>
+      </div>
+      <div class="adv-card">
+        <div class="adv-label adv-service">现有服务</div>
+        <h4>企业AI赋能</h4>
+        <p style="margin-bottom:12px;">AI赋能方向：细化为AI战略规划、AI工具培训、AI落地项目监理</p>
+        <div class="adv-label adv-product">新产品形态</div>
+        <p>"AI落地陪跑服务"——从诊断到落地的全流程陪伴</p>
+      </div>
+    </div>
+
+    <div class="subsection-title">5.2 推荐切入路径（三步走）</div>
+    <div class="path-row" style="margin-bottom:24px;">
+      <div class="path-step p-1">
+        <div class="path-badge">第一步 · 1-2个月</div>
+        <div class="path-title">轻量启动</div>
+        <ul class="path-body">
+          <li>推出"AI应用场景诊断"单次服务（1-3万）</li>
+          <li>输出《企业AI应用机会评估报告》</li>
+          <li>建立AI咨询的初步案例和口碑</li>
+        </ul>
+      </div>
+      <div class="path-step p-2">
+        <div class="path-badge">第二步 · 3-6个月</div>
+        <div class="path-title">产品化服务</div>
+        <ul class="path-body">
+          <li>将诊断服务标准化，形成评估工具包</li>
+          <li>推出"AI落地陪跑"季度服务（15-30万/季）</li>
+          <li>与AI技术供应商建立联合交付合作</li>
+        </ul>
+      </div>
+      <div class="path-step p-3">
+        <div class="path-badge">第三步 · 6-12个月</div>
+        <div class="path-title">规模化复制</div>
+        <ul class="path-body">
+          <li>开发行业专属AI解决方案包</li>
+          <li>建立企业AI培训体系，开展内训课程</li>
+          <li>通过案例积累形成稳定客户来源</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="subsection-title">5.3 首批推广的5个标准化产品</div>
+    <div class="product-row">
+      <div class="product-card">
+        <div class="product-num">1</div>
+        <div class="product-name">AI场景诊断</div>
+        <div class="product-time">1-2周</div>
+        <div class="product-price">1-3万</div>
+        <ul class="product-features">
+          <li>AI readiness评估</li>
+          <li>高价值场景识别</li>
+          <li>落地优先级排序</li>
+        </ul>
+      </div>
+      <div class="product-card">
+        <div class="product-num">2</div>
+        <div class="product-name">知识管理搭建</div>
+        <div class="product-time">2-4周</div>
+        <div class="product-price">3-8万</div>
+        <ul class="product-features">
+          <li>知识库梳理</li>
+          <li>智能问答部署</li>
+          <li>员工使用培训</li>
+        </ul>
+      </div>
+      <div class="product-card">
+        <div class="product-num">3</div>
+        <div class="product-name">智能流程优化</div>
+        <div class="product-time">1-2个月</div>
+        <div class="product-price">5-15万</div>
+        <ul class="product-features">
+          <li>现有流程AI诊断</li>
+          <li>RPA+AI方案设计</li>
+          <li>试点流程改造</li>
+        </ul>
+      </div>
+      <div class="product-card">
+        <div class="product-num">4</div>
+        <div class="product-name">协同办公升级</div>
+        <div class="product-time">2-4周</div>
+        <div class="product-price">2-5万</div>
+        <ul class="product-features">
+          <li>AI工具选型</li>
+          <li>部署配置集成</li>
+          <li>全员使用培训</li>
+        </ul>
+      </div>
+      <div class="product-card" style="border-color:var(--blue-400);background:var(--blue-50);">
+        <div class="product-num" style="background:var(--blue-400);">5</div>
+        <div class="product-name">AI落地陪跑</div>
+        <div class="product-time">季度制</div>
+        <div class="product-price" style="color:var(--blue-800);">15-30万/季</div>
+        <ul class="product-features">
+          <li>全流程陪伴</li>
+          <li>定期复盘调整</li>
+          <li>供应商效果监理</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ Section 6: 避坑指南 ═══ -->
+  <div class="section">
+    <div class="section-title">
+      <div class="icon" style="background:var(--coral-50);">⚠️</div>
+      六、常见误区与避坑指南
+    </div>
+
+    <div class="subsection-title" style="margin-top:0;">6.1 企业端四大误区（咨询师需主动引导）</div>
+    <div class="pitfall-row">
+      <div class="pitfall-card">
+        <div class="pitfall-title">认知两极化</div>
+        <div class="pitfall-body">要么把AI当万能药，要么短期没回报就全盘否定</div>
+        <div class="pitfall-tip">建立合理预期，强调AI是渐进式效率引擎</div>
+      </div>
+      <div class="pitfall-card">
+        <div class="pitfall-title">应用碎片化</div>
+        <div class="pitfall-body">缺乏顶层设计，单部门试点不与其他系统打通</div>
+        <div class="pitfall-tip">试点前就规划数据全链路打通的顶层设计</div>
+      </div>
+      <div class="pitfall-card">
+        <div class="pitfall-title">重硬轻软</div>
+        <div class="pitfall-body">盲目采购硬件，忽视算法优化和数据治理</div>
+        <div class="pitfall-tip">强调"数据治理是AI落地的第一优先级"</div>
+      </div>
+      <div class="pitfall-card">
+        <div class="pitfall-title">数据困境</div>
+        <div class="pitfall-body">数据质量差、部门孤岛严重、安全顾虑重</div>
+        <div class="pitfall-tip">帮企业建立数据治理框架，从小范围高质量数据开始</div>
+      </div>
+    </div>
+
+    <div class="subsection-title">6.2 咨询师端三大陷阱</div>
+    <div class="consultant-pitfall-row">
+      <div class="pitfall-card" style="background:var(--purple-50);border-color:var(--purple-200);">
+        <div class="pitfall-title" style="color:var(--purple-800);">过度承诺</div>
+        <div class="pitfall-body">为拿下项目夸大AI效果，导致客户期望失控</div>
+        <div class="pitfall-tip" style="background:var(--purple-50);color:var(--purple-600);border:1px solid var(--purple-200);">明确服务边界，做好期望管理，过程留痕</div>
+      </div>
+      <div class="pitfall-card" style="background:var(--purple-50);border-color:var(--purple-200);">
+        <div class="pitfall-title" style="color:var(--purple-800);">技术崇拜</div>
+        <div class="pitfall-body">只关注技术选型，忽视业务适配和组织因素</div>
+        <div class="pitfall-tip" style="background:var(--purple-50);color:var(--purple-600);border:1px solid var(--purple-200);">始终以业务痛点为导向，技术服务于业务</div>
+      </div>
+      <div class="pitfall-card" style="background:var(--purple-50);border-color:var(--purple-200);">
+        <div class="pitfall-title" style="color:var(--purple-800);">一次性思维</div>
+        <div class="pitfall-body">交付方案后就结束，不关注落地效果和持续优化</div>
+        <div class="pitfall-tip" style="background:var(--purple-50);color:var(--purple-600);border:1px solid var(--purple-200);">建立持续优化机制，关注长期客户成功</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ Section 7: 行动清单 ═══ -->
+  <div class="section">
+    <div class="section-title">
+      <div class="icon" style="background:var(--green-50);">✅</div>
+      七、接下来30天行动清单
+    </div>
+    <div class="checklist">
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div>
+          <div class="check-title">学习储备</div>
+          <div class="check-body">精读《2026年中国企业AI应用场景报告》，熟悉各行业案例，建立自己的场景知识库</div>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div>
+          <div class="check-title">产品打磨</div>
+          <div class="check-body">将"AI应用场景诊断"设计为标准化产品，制作服务说明书和报告模板</div>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div>
+          <div class="check-title">案例准备</div>
+          <div class="check-body">梳理现有客户中适合AI赋能的场景，准备2-3个案例故事用于推广</div>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div>
+          <div class="check-title">合作拓展</div>
+          <div class="check-body">联系1-2家AI技术厂商（钉钉AI、飞书智能伙伴、百度智能云等），建立合作关系</div>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div>
+          <div class="check-title">内容输出</div>
+          <div class="check-body">撰写1-2篇关于"企业AI落地"的专业文章或公众号内容，建立行业影响力</div>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div>
+          <div class="check-title">工具试用</div>
+          <div class="check-body">亲自试用5-10个主流AI工具（文心一言、通义千问等），积累第一手体验</div>
+        </div>
+      </div>
+      <div class="check-item" style="grid-column:1/-1;">
+        <div class="check-box"></div>
+        <div>
+          <div class="check-title">客户触达</div>
+          <div class="check-body">向3-5个现有客户推介"AI应用场景诊断"服务，以低价或公益方式收集真实反馈，形成第一批案例</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ References ═══ -->
+  <div class="section">
+    <div class="section-title">
+      <div class="icon" style="background:var(--gray-50);">📎</div>
+      参考资料
+    </div>
+    <ul class="ref-list">
+      <li><strong>《2026年中国企业AI应用场景报告》</strong> — 极客邦科技联合双数研究院</li>
+      <li><strong>《AI+行业落地指南：2026年产业赋能干货》</strong> — 腾讯云开发者社区</li>
+      <li><strong>《AI时代的咨询顾问转型》</strong> — AMT企源管理咨询</li>
+      <li><strong>《AI+咨询 | 2025年咨询行业AI实战报告》</strong> — CSDN</li>
+      <li><strong>《人工智能赋能中小企业高质量发展研究报告》</strong> — 中国信通院</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    本报告由 WorkBuddy 整理生成 · 2026年5月 · 供内部参考使用，建议结合实际客户需求灵活调整服务内容和定价策略
+  </div>
+
+</div>
+</body>
+</html>
