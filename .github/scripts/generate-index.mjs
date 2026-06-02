@@ -151,28 +151,28 @@ const out = `<!doctype html>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Pages of Xiangbo</title>
   <style>
-    :root{
-      --bg1:#0b1220;
-      --bg2:#0f1b33;
-      --card:#111b31cc;
-      --stroke:#23304d;
-      --text:#e6edf7;
-      --muted:#9fb0cc;
-      --link:#7dd3fc;
-      --badge:#1f2a44;
-      --badgeText:#cfe2ff;
-      --shadow: 0 20px 60px rgba(0,0,0,.35);
-      --radius: 18px;
-    }
+   :root{
+  --bg1:#ffffff;
+  --bg2:#f6f8fc;
+  --card:#ffffffcc;
+  --stroke:#e6eaf2;
+  --text:#111827;
+  --muted:#6b7280;
+  --link:#2563eb;
+  --badge:#eef2ff;
+  --badgeText:#3730a3;
+  --shadow: 0 18px 50px rgba(17,24,39,.10);
+  --radius: 18px;
+}
     *{box-sizing:border-box;}
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
       color:var(--text);
       background:
-        radial-gradient(1000px 600px at 20% 0%, rgba(125,211,252,.18), transparent 60%),
-        radial-gradient(900px 600px at 90% 10%, rgba(167,139,250,.18), transparent 55%),
-        linear-gradient(180deg, var(--bg1), var(--bg2));
+  radial-gradient(1000px 600px at 20% 0%, rgba(37,99,235,.10), transparent 60%),
+  radial-gradient(900px 600px at 90% 10%, rgba(99,102,241,.10), transparent 55%),
+  linear-gradient(180deg, var(--bg1), var(--bg2));
       min-height:100vh;
     }
     .wrap{
@@ -278,10 +278,7 @@ const out = `<!doctype html>
       border-color: rgba(125,211,252,.22);
       background: rgba(125,211,252,.06);
     }
-    .fileLink .name{
-      font-weight: 560;
-      color: var(--link);
-    }
+    .fileLink .name{ color: var(--link); }
     .badge{
       margin-left:auto;
       font-size:11px;
