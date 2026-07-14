@@ -12,6 +12,8 @@ const EXCLUDE_DIRS = new Set([
   "node_modules",
   "dist",
   ".wrangler",
+  "ai-course",
+  "skills",
 ]);
 
 // 不想在目录页里出现的文件名
