@@ -1,0 +1,121 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>智能体课程讲义（07月16日）</title><style>
+:root{--blue:#002FA7;--blue2:#1957d2;--ink:#1f2937;--muted:#667085;--bg:#f5f7ff;--card:#fff;--border:#dbe3ff;--code:#0b1020;}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans SC','PingFang SC',Arial,sans-serif;background:linear-gradient(135deg,#f8fbff,#eef3ff);color:var(--ink);line-height:1.7;}
+.layout{display:grid;grid-template-columns:280px 1fr;min-height:100vh;}aside{position:sticky;top:0;height:100vh;overflow:hidden;background:var(--blue);color:white;padding:28px 18px;border-right:1px solid rgba(255,255,255,.15);}
+.brand{font-size:14px;letter-spacing:.12em;opacity:.75;margin-bottom:10px;}aside h1{font-size:22px;line-height:1.3;margin:0 0 22px;}.toc{height:calc(100vh - 135px);overflow:auto;padding-right:6px;}.toc a{display:block;color:rgba(255,255,255,.88);text-decoration:none;padding:8px 10px;border-radius:10px;font-size:14px;line-height:1.35;margin:2px 0;}.toc a:hover{background:rgba(255,255,255,.14);color:#fff;}.toc-l4{padding-left:24px!important;font-size:13px!important;opacity:.85;}
+main{height:100vh;overflow:auto;padding:48px 56px;}.content{max-width:980px;margin:0 auto;background:rgba(255,255,255,.82);backdrop-filter:blur(8px);border:1px solid var(--border);border-radius:24px;padding:48px;box-shadow:0 18px 50px rgba(0,47,167,.10);}
+.title{font-size:40px;line-height:1.15;color:var(--blue);margin:0 0 34px;letter-spacing:-.03em;}h3{font-size:28px;color:var(--blue);margin:44px 0 18px;padding-top:16px;border-top:1px solid var(--border);}h4{font-size:20px;color:#123fbd;margin:30px 0 12px;}p{margin:12px 0;}a{color:var(--blue2);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(25,87,210,.25);}a:hover{border-bottom-color:var(--blue2);}strong{color:#101828;}ul,ol{padding-left:1.5em;margin:12px 0 18px;}li{margin:6px 0;}blockquote{margin:18px 0;padding:14px 18px;border-left:4px solid var(--blue);background:#eef3ff;border-radius:0 12px 12px 0;color:#344054;}
+.code-card{margin:18px 0 24px;border-radius:16px;overflow:hidden;background:var(--code);box-shadow:0 10px 24px rgba(2,8,23,.12);}.code-head{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:#111936;color:#c7d2fe;font-size:13px;}.copy-btn{border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);color:white;border-radius:8px;padding:6px 10px;cursor:pointer;}.copy-btn:hover{background:rgba(255,255,255,.16);}pre{margin:0;padding:18px;overflow:auto;}pre code{font-family:Menlo,Consolas,monospace;font-size:14px;line-height:1.6;color:#e5e7eb;white-space:pre;}
+.table-wrap{overflow:auto;margin:18px 0 24px;border:1px solid var(--border);border-radius:14px;}table{width:100%;border-collapse:collapse;background:white;}th{background:#edf3ff;color:var(--blue);text-align:left;}th,td{padding:12px 14px;border-bottom:1px solid #edf1ff;vertical-align:top;}tr:last-child td{border-bottom:0;}
+@media(max-width:820px){.layout{grid-template-columns:1fr;}aside{position:relative;height:auto;}.toc{height:auto;max-height:260px;}main{height:auto;padding:20px;}.content{padding:24px;border-radius:18px;}.title{font-size:30px;}}
+</style></head><body><div class="layout"><aside><div class="brand">2026-07-16</div><h1>智能体课程讲义</h1><nav class="toc"><a class="toc-l3" href="#h-1">WorkBuddy使用说明</a><a class="toc-l4" href="#h-2">01 ｜下载安装</a><a class="toc-l4" href="#h-3">02 ｜ WorkBuddy 是什么？</a><a class="toc-l4" href="#h-4">03｜WorkBuddy 界面先认 6 个入口</a><a class="toc-l3" href="#h-5">练习用资料包</a><a class="toc-l3" href="#h-6">案例01 ：朋友圈经营</a><a class="toc-l3" href="#h-7">案例02：安装获客智能体并完成实操</a><a class="toc-l3" href="#h-8">案例03：销售工作流程的AI改造</a><a class="toc-l3" href="#h-9">案例04：搭建企业的知识库</a><a class="toc-l4" href="#h-10">扩展01：知识库管理参考工具</a><a class="toc-l4" href="#h-11">01｜如何整理隐形知识</a><a class="toc-l4" href="#h-12">02 ｜和 AI 共创开始采集企业的知识</a><a class="toc-l4" href="#h-13">03 ｜建立企业的知识库管理规则</a><a class="toc-l3" href="#h-14">案例05 ：生成并安装专家</a><a class="toc-l3" href="#h-15">案例06：生成老板销售看板</a><a class="toc-l3" href="#h-16">案例07：生成落地计划</a></nav></aside><main><article class="content"><h1 class="title">智能体课程讲义（07月16日）</h1><h3 id="h-1">WorkBuddy使用说明</h3>
+<h4 id="h-2">01 ｜下载安装</h4>
+<div class="code-card"><div class="code-head"><span>plain text</span><button class="copy-btn" data-code="code-1">复制</button></div><pre><code id="code-1">https://www.workbuddy.cn/events/invite?inviteCode=gdo79qmx0e8uh</code></pre></div>
+<h4 id="h-3">02 ｜ WorkBuddy 是什么？</h4>
+<p>不同于普通对话AI只能生成文案、回答问题，WorkBuddy是<strong>「动手型AI办公搭子」</strong>，核心是帮你代做机械重复的杂活：</p>
+<ul><li><strong>文件自动化处理：</strong>批量分类归档、合并表格、提取PDF内容、格式互转</li><li><strong>远程办公操控：</strong>手机发指令，电脑自动执行，出差通勤路上也能推进工作</li><li><strong>定时任务托管：</strong>每日日报、周报、数据汇总、文件归档，设定后到点自动执行推送</li><li><strong>多任务并行处理：</strong>一边整理文档，一边抓取数据，一边生成PPT，效率直接翻倍</li><li><strong>本地知识库搭建：</strong>私有资料存在自己电脑里，AI调取不泄密</li></ul>
+<p><strong>核心定位：</strong>帮打工人甩掉重复机械劳动，把时间留给思考、创意、沟通等高价值事。</p>
+<h4 id="h-4">03｜WorkBuddy 界面先认 6 个入口</h4>
+<p>你不要一上来研究全部按钮，先记住 6 个入口：</p>
+<div class="table-wrap"><table><thead><tr><th>入口</th><th>大白话理解</th><th>什么时候用</th></tr></thead><tbody><tr><td>新建任务</td><td>给 AI 派活</td><td>临时处理文件、写报告、整理表格</td></tr><tr><td>助理</td><td>对外聊天入口</td><td>接飞书、微信、网站、客服入口</td></tr><tr><td>项目</td><td>多人协作空间</td><td>团队一起推进一个客户或交付项目</td></tr><tr><td>专家/技能/连接器</td><td>扩展能力、对接各种第三方应用</td><td>处理特定工作、对接第三方应用</td></tr><tr><td>自动化</td><td>让 AI 到点干活</td><td>每天日报、每 5 分钟模拟发信、每周招标监控</td></tr></tbody></table></div>
+<h3 id="h-5">练习用资料包</h3>
+<p>练习时尽可能使用自己的真实资料，如果没有准备充足的资料，可以下载《课程练习用虚拟资料包》备用。</p>
+<p>下载地址如下：</p>
+<div class="code-card"><div class="code-head"><span>plain text</span><button class="copy-btn" data-code="code-2">复制</button></div><pre><code id="code-2">https://page.xiangbo.net/ai-course/demo_data.zip</code></pre></div>
+<h3 id="h-6">案例01 ：朋友圈经营</h3>
+<ol><li>下载资料包文件到本地，解压后，将示例文件夹中的“朋友圈AI内容自动化”文件夹移动/复制到你个人新建或指定的用于朋友圈经营工作的文件夹。</li><li>在WorkBuddy中新建一个任务，并选择前一步的文件夹作为工作空间。</li><li>将文件夹中的<code>skill.md</code>文件添加到新WorkBuddy新建任务，然后输入提示词：</li></ol>
+<div class="code-card"><div class="code-head"><span>plain text</span><button class="copy-btn" data-code="code-3">复制</button></div><pre><code id="code-3">阅读skill.md和朋友圈运营工作表文件，帮我配置这个skill并安装它，完成自动化任务设置。</code></pre></div>
+<ol><li>参考《自动化任务配置说明》，配置到自动化任务，实现每天自动提醒发送内容。</li><li>完成skill安装、自动化任务设置后，手动执行一次完整流程。</li></ol>
+<h3 id="h-7">案例02：安装获客智能体并完成实操</h3>
+<ol><li>请安装以下全部或部分专家到本地，安装方法为复制安装指令发送到WorkBuddy新建任务对话框，运行安装并完成初始化配置。</li></ol>
+<p><strong>（1）GEO获客智能体</strong></p>
+<div class="code-card"><div class="code-head"><span>plain text</span><button class="copy-btn" data-code="code-4">复制</button></div><pre><code id="code-4">##国内GEO
+安装并注册这个专家 https://page.xiangbo.net/skills/geo-intelligence-master_1.0.zip</code></pre></div>
+<div class="code-card"><div class="code-head"><span>plain text</span><button class="copy-btn" data-code="code-5">复制</button></div><pre><code id="code-5">##国外GEO
+安装并注册这个专家 https://page.xiangbo.net/skills/geo-intelligence-international_1.1.zip</code></pre></div>
+<p><strong>（2）国内精准获客智能体</strong></p>
+<div class="code-card"><div class="code-head"><span>plain text</span><button class="copy-btn" data-code="code-6">复制</button></div><pre><code id="code-6">安装并注册这个专家 https://page.xiangbo.net/skills/amap-customer-miner.zip</code></pre></div>
+<blockquote>使用之前需要提供搜索数据源接口：</blockquote>
+<div class="code-card"><div class="code-head"><span>plain text</span><button class="copy-btn" data-code="code-7">复制</button></div><pre><code id="code-7">1. 访问 https://lbs.amap.com
+2. 注册或登录账号，进入控制台，依次进入：应用管理 &gt; 我的应用 &gt; 创建新应用
+3. 生成Key
+4. 回到WorkBuddy，将key发送给WorkBuddy，完成高德搜索接口注册</code></pre></div>
+<p><strong>（3）海外精准获客/海外邮件营销智能体</strong></p>
+<div class="code-card"><div class="code-head"><span>plain text</span><button class="copy-btn" data-code="code-8">复制</button></div><pre><code id="code-8">##海外精准获客智能体
+安装并注册这个专家 https://page.xiangbo.net/skills/foreign-trade-crm-email-automation.zip</code></pre></div>
+<div class="code-card"><div class="code-head"><span>plain text</span><button class="copy-btn" data-code="code-9">复制</button></div><pre><code id="code-9">##邮件营销智能体
+安装并注册这个专家 https://page.xiangbo.net/skills/email-marketing-assistant.zip</code></pre></div>
+<blockquote>使用之前需要提供搜索数据源接口：</blockquote>
+<div class="code-card"><div class="code-head"><span>plain text</span><button class="copy-btn" data-code="code-10">复制</button></div><pre><code id="code-10">1. 访问 https://www.tavily.com
+2. 注册账号
+3. 生成API key
+4.回到WorkBuddy，将key发送给WorkBuddy</code></pre></div>
+<p><strong>（4）招投标获客智能体</strong></p>
+<div class="code-card"><div class="code-head"><span>plain text</span><button class="copy-btn" data-code="code-11">复制</button></div><pre><code id="code-11">安装并注册这个专家 https://page.xiangbo.net/skills/bid-opportunity-expert.zip</code></pre></div>
+<ol><li>选择符合公司业务类型的智能体，使用公司真实的数据跑通至少一次使用流程。</li></ol>
+<h3 id="h-8">案例03：销售工作流程的AI改造</h3>
+<ol><li>搭建客户工作空间</li></ol>
+<div class="code-card"><div class="code-head"><span>plain text</span><button class="copy-btn" data-code="code-12">复制</button></div><pre><code id="code-12">1. 在电脑内创建用于管理个人客户的工作文件夹，如暂时没有合适的资料，可以将课程提供的示例资料复制进文件夹
+2. 在示例客户跟进表的基础上，修改成为自己的客户跟进记录表
+3. 为正在跟进的客户（建议2-3个）建立子文件夹，并将客户的相关资料文件复制至相应子文件夹内</code></pre></div>
+<ol><li>对意向客户进行背调</li></ol>
+<div class="code-card"><div class="code-head"><span>plain text</span><button class="copy-btn" data-code="code-13">复制</button></div><pre><code id="code-13">查询【公司名称】的公开信息，并结合当前工作空间内已有资料，生成一份「企业背调与机会分析报告」。
+
+报告文件请保存到工作空间内对应的客户文件夹中，文件夹名称为：【客户文件夹名称】。  
+文件名命名为：【公司名称】企业背调与机会分析报告.md。
+
+请围绕以下内容输出：
+一、企业基本信息；二、业务与经营情况；三、潜在问题与需求判断；四、合作机会分析；五、资料来源与可信度。
+
+要求：使用 Markdown；内容具体客观；不输出销售拜访策略；不编造；资料不足请说明；最后给出机会优先级列表。</code></pre></div>
+<ol><li>使用企查查深度调查，需申请企查查的api key</li></ol>
+<div class="code-card"><div class="code-head"><span>plain text</span><button class="copy-btn" data-code="code-14">复制</button></div><pre><code id="code-14">1. 访问 https://agent.qcc.com
+2. 免费注册获得API Key
+3. 按照 https://agent.qcc.com/guide?platform=workbuddy 页面中的指引，在WorkBuddy中完成企查查的配置</code></pre></div>
+<ol><li>安装企业洞察智能体</li></ol>
+<div class="code-card"><div class="code-head"><span>plain text</span><button class="copy-btn" data-code="code-15">复制</button></div><pre><code id="code-15">安装并注册这个专家 https://page.xiangbo.net/skills/wx-customer-insight-report.zip</code></pre></div>
+<ol><li>拜访前生成客户拜访策略、把客户资料变成客户档案、设置客户自动提醒、客户报价/销售方案生成、销售案例复盘、销售日报/销售周报等，可按页面中提示词复制到 WorkBuddy 执行。</li></ol>
+<h3 id="h-9">案例04：搭建企业的知识库</h3>
+<ol><li>WorkBuddy绑定乐享知识库：在WorkBuddy中激活乐享知识库，入口：左侧栏 &gt; 更多 &gt; 乐享知识库。</li><li>在乐享知识库中创建团队、创建知识库、上传几份文档。</li><li>在WorkBuddy中配置微信或企业微信，并测试机器人是否可以回复。</li><li>通过配置好的机器人账号，给 WorkBuddy 发送指令，查询你上传到知识库中的资料。</li></ol>
+<h4 id="h-10">扩展01：知识库管理参考工具</h4>
+<h4 id="h-11">01｜如何整理隐形知识</h4>
+<div class="table-wrap"><table><thead><tr><th>方法</th><th>适合采集什么</th><th>简单操作步骤</th></tr></thead><tbody><tr><td>访谈法</td><td>老板、骨干员工、老师傅的经验判断</td><td>选场景、提问、追问关键节点、整理成步骤</td></tr><tr><td>现场跟拍法</td><td>操作型、服务型、销售型经验</td><td>现场录屏/录像/录音，边做边说，事后整理</td></tr><tr><td>培训输出法</td><td>骨干员工的完整经验体系</td><td>让骨干给新人讲一次，提取流程、话术、案例</td></tr><tr><td>案例复盘法</td><td>成功经验、失败教训</td><td>选真实案例，复盘背景、做法、结果、经验</td></tr><tr><td>问题清单法</td><td>高频问题、常见异常</td><td>收集高频问题，写标准答案和处理步骤</td></tr><tr><td>工作日志法</td><td>日常业务中的零散经验</td><td>每天记录问题、处理方式、结果，每周沉淀</td></tr></tbody></table></div>
+<h4 id="h-12">02 ｜和 AI 共创开始采集企业的知识</h4>
+<div class="code-card"><div class="code-head"><span>plain text</span><button class="copy-btn" data-code="code-16">复制</button></div><pre><code id="code-16">执行这个指令 https://page.xiangbo.net/ai-course/skills/KB-Anlysis.md</code></pre></div>
+<h4 id="h-13">03 ｜建立企业的知识库管理规则</h4>
+<div class="code-card"><div class="code-head"><span>plain text</span><button class="copy-btn" data-code="code-17">复制</button></div><pre><code id="code-17">使用资料包中的《企业知识库搭建工作表.xlsx》，按步骤搭建知识库，并建立企业知识库的管理规则。</code></pre></div>
+<h3 id="h-14">案例05 ：生成并安装专家</h3>
+<ol><li>在计划生成技能或专家前，先与AI沟通需求，让AI生成需求文档，不要直接通过口述输入要求。</li><li>检查并确认AI生成的需求说明文档，然后交给AI，要求AI：</li></ol>
+<div class="code-card"><div class="code-head"><span>plain text</span><button class="copy-btn" data-code="code-18">复制</button></div><pre><code id="code-18">阅读这个文档，按照文档的说明帮我创建一个技能/专家，补充要求如下：***</code></pre></div>
+<h3 id="h-15">案例06：生成老板销售看板</h3>
+<div class="code-card"><div class="code-head"><span>plain text</span><button class="copy-btn" data-code="code-19">复制</button></div><pre><code id="code-19">请读取客户跟进表、线索表、商机表、报价文件和本周销售跟进记录，生成一份老板版销售经营简报，格式为html。
+
+请输出：本周获客概况、本周销售推进概况、重点客户进展、风险客户清单、各销售人员动作摘要、本周成交预测、需要老板决策或支持的事项、下周重点动作建议。
+
+要求：不编造数据；数据不足标注「待补充」；风险客户说明依据；不评价员工绩效；适合老板 5 分钟阅读。</code></pre></div>
+<h3 id="h-16">案例07：生成落地计划</h3>
+<div class="code-card"><div class="code-head"><span>plain text</span><button class="copy-btn" data-code="code-20">复制</button></div><pre><code id="code-20">我要制定企业 AI 落地 30 天行动计划。
+候选场景是：【填写场景】。所在部门是：【填写部门】。目前业务问题是：【填写问题】。可用资料包括：【列出资料】。希望 AI 输出：【填写输出】。初步使用者是：【填写使用者】。需要人工确认的内容包括：【填写边界】。
+
+请帮我生成一页《企业 AI 落地 30 天行动计划》，包括试点场景、选择理由、业务问题、使用者和验收人、输入资料与缺口、AI 输出、能力形态、进入流程方式、人工确认边界、30 天行动计划、验收指标、负责人分工、风险和应对措施。</code></pre></div></article></main></div><script>
+document.querySelectorAll('.copy-btn').forEach((btn) => {
+  btn.addEventListener('click', async () => {
+    const el = document.getElementById(btn.dataset.code);
+    const text = el ? el.innerText : '';
+    try {
+      await navigator.clipboard.writeText(text);
+      const old = btn.innerText;
+      btn.innerText = '已复制';
+      setTimeout(() => { btn.innerText = old; }, 1200);
+    } catch (e) {
+      const old = btn.innerText;
+      btn.innerText = '复制失败';
+      setTimeout(() => { btn.innerText = old; }, 1200);
+    }
+  });
+});
+document.querySelectorAll('a[href^="http"]').forEach((a) => {
+  a.target = '_blank';
+  a.rel = 'noopener';
+});
+</script></body></html>
