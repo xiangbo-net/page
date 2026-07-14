@@ -17,6 +17,7 @@ const EXCLUDE_DIRS = new Set([
 // 不想在目录页里出现的文件名
 const EXCLUDE_FILES = new Set([
   ".DS_Store",
+  ".gitignore",
 ]);
 
 // 不想出现的扩展名（按需添加）
